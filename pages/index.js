@@ -3,8 +3,11 @@ import Layout from "../components/Layout";
 import Hero from "../components/Hero";
 import css from "../styles/home.module.css"
 import Service from "../components/Service";
+import {client} from "../lib/client";
 
-export default function Home() {
+export default function Home({ pizza}) {
+
+  console.log(pizza)
   return (
     <Layout>
       <div className={css.container}>
@@ -23,3 +26,12 @@ export default function Home() {
   );
 }
 
+export const getServerSideProps = async() => {
+  const query = '*[_type == "pizza"]'
+  const pizza = await client.fetch(query)
+  return {
+    props: {
+      pizza
+    }
+  }
+}
