@@ -4,10 +4,9 @@ import Hero from "../components/Hero";
 import css from "../styles/home.module.css"
 import Service from "../components/Service";
 import {client} from "../lib/client";
+import Menu from "../components/Menu";
 
-export default function Home({ pizza}) {
-
-  console.log(pizza)
+export default function Home({ pizza }) {
   return (
     <Layout>
       <div className={css.container}>
@@ -20,6 +19,7 @@ export default function Home({ pizza}) {
         <main>
           <Hero/>
           <Service/>
+          <Menu pizza={pizza}/>
         </main>
       </div>
     </Layout>
